@@ -36,37 +36,36 @@ def email_special_char_checker(string):
 
 def register(request):
 
-    if request.POST:
+    if request.method == 'POST':
         post_username = request.POST['username']
         post_password = request.POST['password']
-        post_conf_password =request.POST['confirm_password']
+        post_conf_password = request.POST['confirm_password']
         post_email = request.POST['email']
-        post_phone =  request.POST['phone']
+        post_phone = request.POST['phone']
+        rule = request.POST['rule']
         post_first_name = request.POST['first_name']
         post_last_name = request.POST['last_name']
-        check_username = Account.objects.all().filter(username=post_username)
-        check_email = Account.objects.all().filter(email=post_email)
+        
+        # Check for duplicates
+        check_username = Account.objects.filter(username=post_username).exists()
+        check_email = Account.objects.filter(email=post_email).exists()
         check_phone = Account.objects.filter(phone=post_phone).exists()
 
-        # Checking for number
-
-        if num_checker(post_first_name)==True:
+        # Perform your custom validations
+        if num_checker(post_first_name):
             messages.error(request, "Sorry, First Name can't contain number")
             return redirect("register")
 
-        if num_checker(post_last_name) == True:
+        if num_checker(post_last_name):
             messages.error(request, "Sorry, Last Name can't contain number")
             return redirect("register")
-
-        # Checking for special character
 
         if special_char_checker(post_first_name):
             messages.error(request, "Sorry, First Name can't contain a special character.")
             return redirect("register")
 
-
         if special_char_checker(post_last_name):
-            messages.error(request,"Sorry, Last Name can't contain a special character.")
+            messages.error(request, "Sorry, Last Name can't contain a special character.")
             return redirect("register")
 
         if special_char_checker(post_username):
@@ -77,31 +76,32 @@ def register(request):
             messages.error(request, "Sorry, Email can't contain a special character.")
             return redirect("register")
 
-
-
         if post_password != post_conf_password:
-
-            messages.error(request, 'Password and Confirm Password Does not match')
-            return redirect("register")
-        if check_phone ==True:
-            messages.error(request,"An user with the phone number already exits.")
+            messages.error(request, 'Password and Confirm Password do not match')
             return redirect("register")
 
-        if not check_username or not check_email:
-            user = Account.objects.create(
-                first_name=post_first_name,
-                last_name=post_last_name,
-                username=post_username,
-                email=post_email,
-                phone = post_phone,
-            )
-            user.set_password(post_password)
-            user.save()
-            messages.success(request, 'Your account has been registered. Please Login now')
+        if check_phone:
+            messages.error(request, "A user with this phone number already exists.")
+            return redirect("register")
+
+        if check_username or check_email:
+            messages.error(request, "A user with the same credentials already exists. Please login to your account.")
             return redirect("login")
-        else:
-            messages.error(request, "Sorry, an user with the same credentials already exits. Please login to your account")
-            return redirect("login")
+
+        # If all checks pass, create the user
+        user = Account.objects.create(
+            first_name=post_first_name,
+            last_name=post_last_name,
+            username=post_username,
+            email=post_email,
+            phone=post_phone,
+            rule=rule  # Assign the rule field if provided
+        )
+        user.set_password(post_password)
+        user.save()
+
+        messages.success(request, 'Your account has been registered. Please login now.')
+        return redirect("login")
 
     else:
         if request.user.is_authenticated:
