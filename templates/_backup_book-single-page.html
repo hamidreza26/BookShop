@@ -1,0 +1,145 @@
+{%extends 'base.html'%}
+{%block content%}
+{%load static%}
+<title>Buy {{book.title}} by {{book.author}} </title>
+<section>
+
+    <div class="container book-page">
+        <div class="row">
+            <!-- Adjusted column sizes for better responsiveness -->
+            <div class="col-md-4 col-sm-12">
+                <!-- Made the image responsive and added alt attribute -->
+                <img src="/media/{{ book.image }}" class="img-fluid img-thumbnail rounded-3" alt="{{ book.title }} cover image" />
+            </div>
+            <div class="col-md-5 col-sm-12">
+                <h3 class="book-title-single">{{ book.title }}</h3>
+                <h4 class="book-price-single mt-3">$ {{ book.price }}</h4>
+                <div class="row">
+                    <div class="col-3 col-md-2 col-sm-6 g-0">
+                        <span class="book-default-single align-items-left">Author:</span>
+                    </div>
+                    <div class="col-7 col-md-6 g-0">
+                        <span class="book-author">{{ book.author }}</span>
+                    </div>
+                </div>
+                <p class="book-short-desc-single mt-3 g-0">
+                    {{ book.description|truncatewords:21 }}
+                </p>
+
+                <div class="row g-0 pt-4">
+                    <div class="col">
+                        {% if book.stocks <= 0 %}
+                        <button class="btn main-addnow-btn btn-disabled" disabled>Out of Stock</button>
+                        {% elif book.stocks_available is False %}
+                        <h3 class="text-danger">Product Not Available</h3>
+                        {% else %}
+                        <a href="{% url 'add_cart' book.slug %}" class="btn main-addnow-btn">Add to cart</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row g-0 mt-3">
+                    <div class="col-3 col-md-2 col-sm-6 g-0">
+                        <span class="book-default-single align-items-left">Category:</span>
+                    </div>
+                    <div class="col-6 col-sm-6 g-0">
+                        <span class="book-author">{{ book.category }}</span>
+                    </div>
+                </div>
+                <div class="row g-0 mt-3">
+                    <div class="col-2 col-md-2 g-0">
+                        <span class="book-default-single align-items-left">Share:</span>
+                    </div>
+                    <div class="col-6 col-md-4 g-0">
+                        <!-- Added noreferrer for security and accessibility improvements -->
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-facebook fa-custom"></i>
+                        </a>
+                        <a href="http://twitter.com/intent/tweet/?url={{ request.build_absolute_uri }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-twitter fa-custom"></i>
+                        </a>
+                        <a href="https://instagram.com/?url={{ request.build_absolute_uri }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-instagram fa-custom"></i>
+                        </a>
+                        <a href="http://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-pinterest fa-custom"></i>
+                        </a>
+                        <a href="whatsapp://send?text={{ book.title }} available on {{ request.build_absolute_uri }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-whatsapp fa-custom"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12" style="margin-top: 83px;">
+                <p class="text-danger" style="font-size: 14px; font-weight: 600;"><b>Feel free to chat with us</b></p>
+                <div class="sidebar-style"><i class="fa-solid fa-box"></i> 24 hour Delivery</div>
+                <div class="sidebar-style"><i class="fa-solid fa-truck-clock"></i> Free Shipping</div>
+                <div class="sidebar-style"><i class="fa-solid fa-arrow-rotate-left"></i> 30 Days Refund</div>
+            </div>
+        </div>
+
+        <div class="row book-tabs">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Summary</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Others</button>
+                    </li>
+                    <!-- Added comments tab -->
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" type="button" role="tab" aria-controls="comments" aria-selected="false">Comments</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <p class="description">{{ book.description }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <!-- Add content for the 'Others' tab if needed -->
+                    </div>
+                    <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                        <!-- Loop through the comments and display them -->
+                        {% if comments %}
+                            {% for comment in comments %}
+                                <div class="comment mt-3">
+                                    <h5>{{ comment.user.username }}</h5>
+                                    <p class="description">{{ comment.content }}</p>
+                                    <small>{{ comment.created_at }}</small>
+                                    <hr>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="description">No comments yet. Be the first to comment!</p>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row text-center">
+            <h3 class="text-front-page pt-3">Related Books</h3>
+        </div>
+
+        <div class="product container">
+            <div class="row">
+                {% for related_book in related_books %}
+                <div class="product-box col-6 col-md-2">
+                    <a class="text-decoration-none" href="/book/{{ related_book.slug }}">
+                        <img class="product-img img-fluid" src="{{ related_book.image.url }}" alt="{{ related_book.title }} cover image" />
+                        <h3 class="book-title">{{ related_book.title }}</h3>
+                        <p class="book-price"><b>{{ related_book.price }}</b></p>
+                        <button class="btn btn-custom">Buy Now</button>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

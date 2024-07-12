@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<title>Contact Us</title>
+<div class="container contact-form" >
+    <h1 class="default-style text-center">Contact Form</h1> <!-- Capitalized "Form" for consistency -->
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="">
+                <div class="text-center">
+                    <img class="img-fluid pt-20" src="{% static 'images/logo-black1.png' %}" alt="Logo"> <!-- Added alt attribute for accessibility and corrected static tag -->
+                </div>
+                <p class="contact-details mt-3"><b>Address: Iran, Mashad.</b></p>
+                <p class="contact-details"><b>Email: rezat@gmail.com</b></p>
+            </div>
+        </div>
+
+        <div class="col-md-8"> <!-- Added offset to center the form on larger screens -->
+            <div class="form-group">
+                <label for="name">Your Name</label> <!-- Added for attribute to associate label with input -->
+                <input type="text" id="name" class="form-control" placeholder="Enter your name"> <!-- Added placeholder for better UX -->
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label> <!-- Added for attribute to associate label with input -->
+                <input type="email" id="email" class="form-control" placeholder="Enter your email"> <!-- Changed input type to email for validation and added placeholder -->
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label> <!-- Added for attribute to associate label with textarea -->
+                <textarea id="message" class="form-control" rows="7" placeholder="Enter your message"></textarea> <!-- Added placeholder for better UX -->
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Send Message</button> <!-- Added type attribute for better form semantics -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
+

@@ -1,0 +1,702 @@
+.header-last {
+    position: relative;
+    justify-content: center;
+    top: 102px;
+    background: #2C2B2B;
+    box-shadow: 0 2px 0 rgba(53, 50, 50, 0.25);
+    height: 46px;
+}
+
+
+.navbar-zero {
+    position: absolute;
+    padding-bottom: 76px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: #18191A;
+    opacity: 0.99;
+    box-shadow: 0 4px 2px 3px rgb(160 160 158 / 24%);
+}
+
+a.nav-link {
+    font-family: ui-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(239, 239, 239, 0.9);
+}
+
+
+.fa-bars, .fa-home {
+    height: 17px;
+    width: 20px;
+    padding-right: 3px;
+}
+
+.fa-address-book, .fa-search {
+    height: 20px;
+    width: 20px;
+    padding-right: 3px;
+}
+
+
+.form-control {
+    background: #FFFEFE;
+    border: 2px solid #a9a9a9;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    /*padding: 14px;*/
+    /*height: 40px;*/
+    margin-bottom: 17px;
+}
+
+.custom-search-button {
+    width: 52px;
+    height: 37px;
+    background: #4E4C4C;
+}
+
+.search-bar {
+    position: absolute;
+}
+
+.book-price, .book-title {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.045em;
+    color: #222222;
+}
+
+.book-title {
+    padding-top: 13px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.btn-custom {
+    width: 142px;
+    height: 31px;
+    background: #282c27;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.045em;
+    color: #ffffff;
+    margin-top: 6px;
+}
+
+.row {
+    margin: 0 auto;
+}
+
+.product-img {
+    width: 152px;
+    height: 213px;
+}
+
+.dividerClass {
+    border-top-color: #999;
+}
+
+.product-img {
+    width: 152px;
+    height: 213px;
+}
+
+a.nav-link:hover, button.btn.btn-custom:hover, div.product-box.col-md-2:hover {
+    background: #616161;
+    color: #ffffff;
+}
+
+div.product-box.col-md-2:hover {
+    background: rgba(44, 61, 77, 0.45);
+    padding: 14px 14px 14px 16px;
+    transition: 0.6s;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2C2B2B;
+    border-color: #ffffff;
+}
+
+.button-submit{
+    background: #588535;
+    opacity: 0.80; /* Opacity value should be between 0 and 1 */
+    width: 148px;
+    height: 44px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-family: roboto, serif;
+    font-size: 19px;
+    letter-spacing: 2px;
+    line-height: 30px;
+}
+
+p.register-infos{
+    font-family: Open Sans, serif;
+    font-weight: 700;
+}
+
+.card {
+    background: linear-gradient(0deg, rgba(24, 24, 24, 0.2), rgba(24, 24, 24, 0.2)),
+    linear-gradient(0deg, rgba(14, 40, 16, 0.2), rgba(14, 40, 16, 0.2)),
+    #3E3838;
+}
+
+.custom-color-contact {
+    background: #18191A;
+    color: white;
+}
+
+.fa-user-contact {
+    font-size: 85px;
+}
+
+textarea.form-control {
+    height: 79px;
+}
+
+img.product-img-single {
+    width: 225px;
+    height: 362px;
+}
+
+.product-card {
+    background: #FFFFFF;
+    border-radius: 6px;
+    padding: 20px 60px 68px 20px;
+}
+
+.product-buy-button {
+    width: 200px;
+    height: 43px;
+    background: #2C2B2B;
+    border-radius: 6px;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 176.69%;
+    letter-spacing: 0.015em;
+    color: #FFFFFF;
+}
+
+
+.product-title, .product-cat, .product-price {
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.015em;
+}
+
+.product-title {
+    font-size: 24px;
+    line-height: 176.69%;
+    color: #565656;
+}
+
+.product-cat {
+    font-family: Roboto, sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.product-price {
+    font-size: 19px;
+    line-height: 176.69%;
+}
+
+
+
+div.product-price-custom {
+    margin-bottom: 8px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.footer {
+    margin-top: 80px;
+    padding-top: 29px;
+    padding-bottom: 20px;
+    background-color: #323232;
+    position: relative;"
+}
+
+.footer-container {
+    padding: 200px 0 50px;
+}
+
+.footer-link, .footer-useful, p.footer-about {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+}
+
+
+.footer-link {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 141.7%;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
+
+.footer-useful {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 178.7%;
+    letter-spacing: 0.045em;
+    color: #FFFFFF;
+}
+
+p.footer-about {
+    font-weight: normal;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    line-height: 144.69%;
+}
+
+
+.footer-copyright{
+     background: #444444;
+    height:40px
+}
+
+.footer-copyright-text {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 178.7%;
+    letter-spacing: 0.045em;
+    padding-top: 5px;
+    color: #FFFFFF;
+}
+
+.footer-row{}
+
+
+.footer-col {
+    padding-right: 70px;
+}
+
+hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 3px solid #eeeeee !important;
+    width: 40px;
+}
+
+p.product-des {
+    margin-top: 20px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.015em;
+    color: #5a5959;
+}
+
+
+img.book-cart-img {
+    /*margin: 0 27px 0 10px;*/
+}
+
+div.book-cart-box {
+    padding: 14px 0;
+}
+
+div.book-cart-price, div.book-quantity, div.book-cart-total-book-price {
+    margin-top: 33px;
+    font-size: 18px;
+}
+
+
+.main-book-checkout-button {
+    height: 34px;
+    width: 55px;
+    padding-left: 20px;
+}
+
+.main-custom-btn-update, .main-custom-btn-remove {
+    margin-top: 28px;
+    height: 39px;
+    width: 115px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.main-custom-btn-update {
+    background: grey;
+    color: #e3e3e3;
+}
+
+.main-custom-btn-remove {
+    background: #3a3939;
+    color: white;
+}
+
+.author-name {
+    font-size: 14px;
+}
+
+.main-checkout-card {
+    background: white;
+    color: #222222;
+    border: 1px solid rgb(0 0 0 / 27%);
+    padding: 24px;
+}
+
+h4.main-h4-checkout {
+    border: 1px solid lightgrey;
+    padding: 13px;
+    font-size: 17px;
+}
+
+.main-checkout-btn {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 17px;
+    background: #323232;
+    color: white;
+    font-weight: 600;
+}
+
+.main-checkout-continue {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 17px;
+    background: white;
+    color: #575757;
+    border: 1px solid #3c3c3c;
+    font-weight: 600;
+}
+
+
+.main-dashboard-menu-list.active {
+    z-index: 2;
+    color: #ffffff;
+    background-color: #3e3e3e;
+    border-color: transparent;
+}
+
+.list-group-item.active {
+   border-color: #3e3e3e; /* Corrected missing semicolon */
+}
+
+.main-dashboard-menu-list {
+    z-index: 2;
+    color: #fff;
+    background-color: #525252;
+}
+
+.display-4 {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.0;
+    color: #FFFFFF;
+}
+
+.main-favorite {
+    color: #71C838;
+}
+
+.hero-text {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.03em;
+    color: rgb(129 129 129 / 89%);
+}
+
+
+.button-buy {
+    background: rgb(46, 47, 43);
+    opacity: 0.88;
+    width: 147px;
+    height: 44px;
+    border-radius: 3px;
+    outline: none;
+    color: white;
+    margin-right: 40px;
+    border: 1px solid;
+    font-family: roboto, serif;
+    font-size: 19px;
+    letter-spacing: 2px;
+    line-height: 30px;
+}
+
+.button-shop {
+    background: #72aa46;
+    opacity: 0.80; /* Opacity value should be between 0 and 1 */
+    width: 148px;
+    height: 44px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-family: roboto, serif;
+    font-size: 19px;
+    letter-spacing: 2px;
+    line-height: 30px;
+}
+
+p.lead {
+    margin-top: 39px;
+}
+
+.navbar {
+    padding-top: 7px;
+    padding-bottom: 9px;
+    background: linear-gradient(0deg, rgba(24, 24, 24, 0.2), rgba(24, 24, 24, 0.2)),
+                linear-gradient(0deg, rgba(14, 40, 16, 0.2), rgba(14, 40, 16, 0.2)),
+                #3E3838;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #FFFFFF;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+    color: rgb(114, 170, 70);
+}
+
+.fa-2x {
+    font-size: 1.8em;
+    margin: 3px;
+    color: #73aa47;
+}
+
+.text-green {
+    color: #73aa47;
+}
+
+.container-fluid.navbar-container,
+.navbar-brand {
+    padding-left: 0;
+}
+
+.navbar-brand img, .footer img {
+    max-height: 70px; /* Set a maximum height for the images */
+    height: auto;
+    width: auto;
+}
+
+.contact-details {
+    color: #5e5e5e;
+    font-family: Roboto, serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+p.default-style {
+    color: #555555;
+    font-family: "Roboto", Sans-serif, serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.4px;
+}
+
+h3.default-style {
+    color: #458f0b;
+    font-family: "Poppins", Sans-serif, serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent
+}
+
+.list-group-item {
+    background: none;
+    border: none transparent;
+    color: rgba(239, 239, 239, 0.9);
+    padding: 10px 4px;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #6a9d42;
+    border-color: transparent; /* 'none' is not a valid border color, should be removed */
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+    border-color: #6a9d42;
+}
+
+/*.card .card-dashboard {*/
+/*    color: red;*/
+/*    padding: 8px 0;*/
+/*    font-size: 15px;*/
+/*}*/
+
+.text-front-page {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 23px;
+    font-family: 'Poppins', serif;
+    color: #3F3F3F;
+}
+
+.book-title-single {
+    font-weight: 600;
+    font-size: 24px;
+    margin-top: 20px;
+    line-height: 34px;
+    font-family: Roboto, serif;
+    color: #111111;
+}
+
+.book-price-single {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+    color: #FD2121;
+}
+
+
+.book-short-desc-single {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #767676;
+}
+
+.book-author {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #767676;
+}
+
+
+.book-default-single {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222222;
+}
+
+.main-book-addnow-input {
+    width: 142px;
+    height: 47px;
+}
+
+.main-addnow-btn {
+    color: white;
+    font-weight: 500;
+    justify-content: center;
+    align-content: center;
+    padding: 12px 98px;
+    background: linear-gradient(0deg, rgba(23, 134, 40, 0.2), rgba(23, 134, 40, 0.2)), #73AA47;
+}
+
+.fa-custom {
+    font-size: 25px;
+    color: #609A32;
+    padding: 2px;
+}
+
+.sidebar-style {
+    padding: 8px 0;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: Roboto, serif;
+    color: #222222;
+}
+
+.description {
+    margin-top: 40px;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 33px;
+    color: #767676;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.dashboard-col-total {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.book-page{
+    padding: 60px 20px;
+}
+
+.book-tabs{
+    margin-top: 53px;
+}
+.card-dashboard-col-total-number{
+    font-size: 18px;
+    font-weight: 700;
+    color: #868686;
+}
+
+.dashboard-card{
+    padding-top: 10px;
+    padding-bottom:9px;
+    color: white;
+}
+
+.fa-dashboard{
+    font-size: 56px;
+    color: #fbfff7;
+}

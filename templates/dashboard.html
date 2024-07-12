@@ -1,0 +1,115 @@
+{% extends 'dashboard-base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    {% include 'dashboard-menu.html' %}
+    <div class="tab-content col-md-9 mt-3"> <!-- Adjusted column width and added top margin -->
+        <div class="col-md-12">
+            {% include 'messages.html' %}
+        </div>
+
+        <h3 class="default-style">User Dashboard</h3>
+        <hr>
+
+        <div class="row">
+            <!-- Added consistent structure for each card -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- Adjusted column width and margin-bottom for spacing -->
+                <a href="/dashboard/orders">
+                    <div class="card dashboard-card"> <!-- Set fixed height -->
+                        <div class="card-body d-flex flex-column justify-content-center"> <!-- Added card body for consistent padding and alignment -->
+                            <div class="row align-items-center text-center">
+                                <div class="col-12"><i class="fa fa-user fa-dashboard"></i></div>
+                                <div class="col-12 dashboard-col-total">
+                                    Total Orders
+                                    <div class="card-dashboard-col-total-number">
+                                        {% if total_orders <= 0 %}
+                                            0
+                                        {% else %}
+                                            {{ total_orders }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- Adjusted column width and margin-bottom for spacing -->
+                <a href="/dashboard/orders">
+                    <div class="card dashboard-card"> <!-- Set fixed height -->
+                        <div class="card-body d-flex flex-column justify-content-center"> <!-- Added card body for consistent padding and alignment -->
+                            <div class="row align-items-center text-center">
+                                <div class="col-12"><i class="fa fa-truck fa-dashboard"></i></div>
+                                <div class="col-12 dashboard-col-total">
+                                    Delivered Orders
+                                    <div class="card-dashboard-col-total-number">
+                                        {% if dilevered_orders <= 0 %}
+                                            0
+                                        {% else %}
+                                            {{ dilevered_orders }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- Adjusted column width and margin-bottom for spacing -->
+                <div class="card dashboard-card"> <!-- Set fixed height -->
+                    <div class="card-body d-flex flex-column justify-content-center"> <!-- Added card body for consistent padding and alignment -->
+                        <div class="row align-items-center text-center">
+                            <div class="col-12"><i class="fa fa-calendar fa-dashboard"></i></div> <!-- Changed icon for better context -->
+                            <div class="col-12 dashboard-col-total">
+                                Registered on
+                                <div class="card-dashboard-col-total-number">{{ registered_on }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- Adjusted column width and margin-bottom for spacing -->
+                <div class="card dashboard-card"> <!-- Set fixed height -->
+                    <div class="card-body d-flex flex-column justify-content-center"> <!-- Added card body for consistent padding and alignment -->
+                        <div class="row align-items-center text-center">
+                            <div class="col-12"><i class="fa fa-clock fa-dashboard"></i></div> <!-- Changed icon for better context -->
+                            <div class="col-12 dashboard-col-total">
+                                Last Login Date
+                                <div class="card-dashboard-col-total-number">{{ last_login }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="default-style mt-3">Your recent orders (last 4)</p> <!-- Added margin-top for spacing -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Order Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order_id_list %}
+                    <tr>
+                        <th scope="row">{{ order.order_id }}</th>
+                        <td>{{ order.order_status }}</td>
+                        <td>{{ order.date_created }}</td>
+                        <td><a href="/dashboard/view_order/{{ order.order_id }}">View Order</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

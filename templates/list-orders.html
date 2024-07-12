@@ -1,0 +1,74 @@
+{% extends 'dashboard-base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    {% include 'dashboard-menu.html' %}
+    <div class="col-md-9 mt-3"> <!-- Adjusted column width and added top margin -->
+
+        <div class="col-md-12">
+            {% include 'messages.html' %}
+        </div>
+
+        <h3 class="default-style">Your Orders List</h3>
+        <hr>
+        <p class="default-style">You can check your placed orders below. If you have any problems with any of your orders, please contact us via live chat or email. We will assist you as soon as possible.</p>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Order Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order_id_list %}
+                <tr>
+                    <td>{{ order.order_id }}</td>
+                    <td>{{ order.order_status }}</td>
+                    <td>{{ order.date_created }}</td>
+                    <td><a href="/dashboard/view_order/{{ order.order_id }}">View Order</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="pagination mt-3"> <!-- Centered pagination -->
+            {% if order_id_list.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="/dashboard/orders?page=1">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="/dashboard/orders?page={{ order_id_list.previous_page_number }}" tabindex="-1">{{ order_id_list.previous_page_number }}</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">First</span>
+                </li>
+            {% endif %}
+
+            <li class="page-item active">
+                <span class="page-link">{{ order_id_list.number }} <span class="sr-only">(current)</span></span>
+            </li>
+
+            {% if order_id_list.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="/dashboard/orders?page={{ order_id_list.next_page_number }}">{{ order_id_list.next_page_number }}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="/dashboard/orders?page={{ order_id_list.paginator.num_pages }}">Last</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Last</span>
+                </li>
+            {% endif %}
+        </ul>
+
+    </div>
+</div>
+
+{%endblock content%}

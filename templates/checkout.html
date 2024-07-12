@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-3">
+    <!-- Adjusted container margin -->
+
+    <div class="col-md-12 mb-4">
+        {% include 'messages.html' %}
+    </div>
+
+    <h3 class="default-style">Checkout Portal</h3>
+    <hr>
+    <p class="default-style">Please fill up the form to complete your order</p>
+
+    <form action="checkout_req/process" method="POST">
+        {% csrf_token %}
+        <meta charset="UTF-8">
+        <p class="default-style register-infos text-left"><b>Delivery Info</b></p>
+
+        <!-- Wrapped form fields in a row for better layout -->
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter your first name" required>
+                <!-- Added required attribute for validation -->
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter your last name" required>
+                <!-- Added required attribute for validation -->
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" name="address" id="address" placeholder="Enter Street Address" required>
+                <!-- Added required attribute for validation -->
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" id="city" placeholder="Enter Your City" required>
+                <!-- Added required attribute for validation -->
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="division">Division</label>
+                <input type="text" class="form-control" name="division" id="division" placeholder="Enter Your Division" required>
+                <!-- Added required attribute for validation -->
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" name="zip" id="zip" placeholder="Enter Your Zip Code" required>
+                <!-- Added required attribute for validation -->
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="country">Country</label>
+                <input type="text" class="form-control" name="country" id="country" placeholder="Enter Your Country" required>
+                <!-- Added required attribute for validation -->
+            </div>
+        </div>
+
+        <p class="default-style register-infos text-left pt-3"><b>Payment Information</b></p>
+        <p class="register-infos">Our Bkash Number: 0184XXXXXXXX</p>
+
+        <!-- Wrapped payment fields in a row for better layout -->
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="transaction_id">Bkash Payment</label>
+                <input type="text" class="form-control" name="transaction_id" id="transaction_id" placeholder="Your Bkash Transaction Id" required>
+                <!-- Added required attribute for validation -->
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="order_note">Order Note (If any)</label>
+                <input type="text" class="form-control" name="order_note" id="order_note" placeholder="Order Note">
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">Submit</button>
+        <!-- Moved button outside of form-group for better alignment and added margin-top -->
+    </form>
+</div>
+{% endblock content %}

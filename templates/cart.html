@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-3">
+    {% for cart_item in cart_items %}
+    <div class="row book-cart-box py-3 mb-3 border-bottom">
+        <!-- Added padding and bottom margin for better spacing -->
+        <div class="book-img-info col-md-3 col-sm-12 mb-3 mb-md-0">
+            <!-- Added responsive class and bottom margin for smaller screens -->
+            <a href="/book/{{ cart_item.book.slug }}">
+                <img class="book-cart-img img-fluid img-thumbnail" src="{{ cart_item.book.image.url }}" alt="{{ cart_item.book.title }}" />
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-12 d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+            <!-- Adjusted column size and added flex properties for responsiveness -->
+            <a href="/book/{{ cart_item.book.slug }}" class="nostyle text-dark">
+                <div>
+                    <h5>{{ cart_item.book.title }}</h5>
+                    <p>{{ cart_item.book.author }}</p>
+                    <p class="book-cart-price mb-0"><b>${{ cart_item.book.price }}</b></p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-12 d-flex flex-column align-items-center">
+            <!-- Adjusted class to ensure form and input are on one line and buttons on the next -->
+            <div class="w-100 justify-content-between">
+                <form action="/update_cart_item/{{ cart_item.book.slug }}" method="POST" class="d-flex">
+                    <!-- Changed d-inline to d-flex for better alignment -->
+                    {% csrf_token %}
+                    <input class="form-control" name="quantity" type="number" value="{{ cart_item.quantity }}" min="1" max="{{ cart_item.book.stocks }}">
+                    <!-- Added mr-2 for margin-right -->
+                </form>
+                <!-- Added w-100 and justify-content-between for full width and spaced buttons -->
+                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                <!-- Moved inside the second div -->
+                <a href="{% url 'delete_cart_item' cart_item.book.slug %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container mt-3">
+    <div class="row justify-content-end">
+        <div class="col-md-12 col-sm-12 card main-checkout-card p-3">
+            <!-- Added padding for card -->
+            <h4 class="main-h4-checkout">Subtotal: ${{ total }}</h4>
+            <h4 class="main-h4-checkout">Grandtotal: ${{ total }}</h4>
+            <a href="/" class="btn btn-secondary btn-sm mt-2">Continue Shopping</a>
+            <!-- Changed button class for consistency and added margin -->
+            <a href="/checkout" class="btn btn-success btn-sm mt-2">Checkout</a>
+            <!-- Changed button class for consistency and added margin -->
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

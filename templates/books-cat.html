@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-3">
+    <h3 class="default-style">{{ category_name }}</h3>
+    <hr>
+
+    <div class="row">
+        {% for book in books %}
+        <div class="product-box col-md-2 col-sm-6">
+            <a class="text-decoration-none" href="/book/{{ book.slug }}">
+                <img class="product-img" src="{{ book.image.url }}" alt="{{ book.title }}">
+                <h3 class="book-title">{{ book.title }}</h3>
+                <p class="book-price"><b>$ {{ book.price }}</b></p>
+                <a href="{% url 'add_cart' book.slug %}" class="btn btn-custom">Buy Now</a>
+                <!-- Changed button text to 'Buy Now' for clarity -->
+            </a>
+        </div>
+        {% endfor %}
+
+        <div class="col-12">
+            <ul class="pagination mt-3">
+                <!-- Adjusted pagination structure for better alignment -->
+                {% if books.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'category' %}?page=1">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'category' %}?page={{ books.previous_page_number }}">Previous</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">First</span>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <span class="page-link">{{ books.number }}</span>
+                </li>
+
+                {% if books.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'category' %}?page={{ books.next_page_number }}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'category' %}?page={{ books.paginator.num_pages }}">Last</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Last</span>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
