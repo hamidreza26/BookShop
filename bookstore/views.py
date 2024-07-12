@@ -48,7 +48,7 @@ def single_book(request, single_book_slug):
 
         }
 
-    return render(request, 'book-sin2gle-page.html',context)
+    return render(request, 'book-single-page.html',context)
 
 
 def search_result(request):
